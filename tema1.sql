@@ -1,3 +1,35 @@
+/*
+I.
+
+1. Câte coloane apar în rezultatul cererii urm?toare: 
+     SELECT address1||','||address2||','||address2 "Adress"
+     FROM employee; 
+   A) 1
+    
+2. Care dintre urm?toarele nume este un identificator valid pentru o coloan?? 
+   C) Catch_#22
+   
+3. Care func?ie pe caractere poate fi utilizat? pentru a returna o por?iune 
+specificat? dintr-un ?ir de caractere: 
+   C) SUBSTR
+   
+4. Care este caracterul de continuare a unei comenzi SQL*Plus?
+   C) -
+
+5. Presupunând c? astazi este luni, 2 martie 2009, ce returneaz? cererea urm?toare? 
+      SELECT to_char(NEXT_DAY(sysdate, 'MONDAY'), 'DD-MON-YY') FROM dual;
+   9-MAR-09 
+   
+6.  Pentru a ob?ine o mul?ime rezultat f?r? niciun produs cartezian, 
+    care este num?rul minim de condi?ii care ar trebui s? apar? într-o
+    clauz? WHERE a unei opera?ii de join asupra a 4 tabele? 
+      Nr minim de conditii = 3
+      
+7.  Care dintre urm?toarele func?ii SQL poate opera asupra oric?rui tip de date? 
+    D) MAX
+*/
+
+-- II
 -- ex 1
 select cust_id Cod, cust_name Nume
 from customer_tbl
@@ -24,9 +56,9 @@ select * from employee_tbl;
 
 -- ex 4
 select 
-   concat(last_name, concat(', ', first_name)) "NAME", 
-   to_char(emp_id, '%%%-%%-%%%') "EMP_ID",
-   phone "PHONE"
+   last_name||', '||first_name "NAME",
+   substr(emp_id, 0, 3)||'-'||substr(emp_id, 3, 2)||'-'||substr(emp_id, 5, 4) as "EMP_ID",
+   '('||substr(phone, 0, 3)||')'||substr(phone, 3, 3)||'-'||substr(phone, 6, 4) as "PHONE"
 from employee_tbl;
 
 -- ex 5
